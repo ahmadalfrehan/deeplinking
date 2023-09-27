@@ -1,3 +1,4 @@
+import 'package:deeplinking/screens/graph.dart';
 import 'package:deeplinking/screens/home-screen.dart';
 import 'package:deeplinking/screens/notification.dart';
 import 'package:deeplinking/screens/profile.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Profile(),
+      home: const Graph(),
     );
   }
 }

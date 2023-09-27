@@ -9,28 +9,37 @@ class Profile extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Profile Screen"),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            child: Stack(
-              clipBehavior: Clip.none,
-              alignment: Alignment.topLeft,
-              children: [
-                Container(
-                  height: 150,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.fitWidth,
-                          image: NetworkImage(
-                              "https://ahmadalfrehan.com/assets/assets/images/logo.jpg"))),
-                ),
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Column(
-                          children: [
+      body: TweenAnimationBuilder(
+        tween: Tween<double>(begin: -1.0, end: 0.0), // Start off-screen to the left
+        duration: Duration(seconds: 1),
+        builder: (context, double value, child) {
+          return Transform.translate(
+            offset: Offset(value * MediaQuery.of(context).size.width, 0.0),
+            child: child,
+          );
+        },
+        child: Column(
+          children: [
+            SizedBox(
+              child: Stack(
+                clipBehavior: Clip.none,
+                alignment: Alignment.topLeft,
+                children: [
+                  Container(
+                    height: 150,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fitWidth,
+                            image: NetworkImage(
+                                "https://ahmadalfrehan.com/assets/assets/images/logo.jpg"))),
+                  ),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Column(
+                            children: [
                             SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height / 10),
@@ -59,25 +68,26 @@ class Profile extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 2,
-                      child: ListView.separated(
-                        separatorBuilder: (context, index) {
-                          return const Divider();
-                        },
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return const ListTile(
-                              leading: Text('12'),
-                              title: Text('Some info about person'));
-                        },
+                        height: MediaQuery.of(context).size.height / 2,
+                        child: ListView.separated(
+                          separatorBuilder: (context, index) {
+                            return const Divider();
+                          },
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            return const ListTile(
+                                leading: Text('12'),
+                                title: Text('Some info about person'));
+                          },
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
