@@ -10,8 +10,8 @@ class Profile extends StatelessWidget {
         title: const Text("Profile Screen"),
       ),
       body: TweenAnimationBuilder(
-        tween: Tween<double>(begin: -1.0, end: 0.0), // Start off-screen to the left
-        duration: Duration(seconds: 1),
+        tween: Tween<double>(begin: -1.0, end: 0.0),
+        duration: const Duration(seconds: 1),
         builder: (context, double value, child) {
           return Transform.translate(
             offset: Offset(value * MediaQuery.of(context).size.width, 0.0),
